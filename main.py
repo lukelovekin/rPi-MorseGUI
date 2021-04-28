@@ -61,19 +61,22 @@ class MyGUI(QMainWindow):
 		else:
 			print("letter or number was not sent in")
 
+	
 	def morseCode(self):
 		string = self.text.text()
-        if len([l for l in string]) > 12:
-            print("string too long")
-            return 0
-        else:
-            print(string)
-            morse_array = [MORSE_CODE[x.upper()] for x in string]
-            morse_string = " ".join(morse_array)
-            print(morse_string)
-            for y in morse_string:
-                self.flashMorse(y)
-                print(y)
+		if len([l for l in string]) > 12:
+			print("string too long")
+			return 0
+		print(string)
+		try:
+			morse_array = [MORSE_CODE[x.upper()] for x in string]
+			morse_string = " ".join(morse_array)
+			print(morse_string)
+			for y in morse_string:
+				self.flashMorse(y)
+				print(y)
+		except KeyError:
+			print('a non letter or number was entered')
 
 			
 			
